@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        [$min, $max] = explode(',', option('sign_score'));
+        [$min, $max] = explode(',', (string) option('sign_score'));
         $scoreIntro = trans('user.score-intro.introduction', [
             'initial_score' => option('user_initial_score'),
             'score-from' => $min,
@@ -118,7 +118,7 @@ class UserController extends Controller
             );
 
         if ($remainingTime <= 0) {
-            [$min, $max] = explode(',', option('sign_score'));
+            [$min, $max] = explode(',', (string) option('sign_score'));
             $acquiredScore = rand((int) $min, (int) $max);
             $acquiredScore = $filter->apply('sign_score', $acquiredScore);
 

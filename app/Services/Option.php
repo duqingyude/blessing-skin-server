@@ -40,7 +40,7 @@ class Option
             return $value;
         }
 
-        switch (strtolower($value)) {
+        switch (strtolower((string) $value)) {
             case 'true':
             case '(true)':
                 return true;

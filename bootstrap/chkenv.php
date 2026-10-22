@@ -50,12 +50,19 @@ ini_set('display_errors', true);
     }
 
     $requiredVersion = '8.0.2';
+    $maxSupportedVersion = '8.3.0';
     preg_match('/(\d+\.\d+\.\d+)/', PHP_VERSION, $matches);
     $version = $matches[1];
     if (version_compare($version, $requiredVersion, '<')) {
         die_with_utf8_encoding(
             '[Error] Blessing Skin requires PHP version >= '.$requiredVersion.', you are now using '.$version.'<br>'.
             '[错误] 你的 PHP 版本过低（'.$version.'），Blessing Skin 要求至少为 '.$requiredVersion
+        );
+    }
+    if (!version_compare($version, $maxSupportedVersion, '<')) {
+        die_with_utf8_encoding(
+            '[Error] Blessing Skin supports PHP versions below '.$maxSupportedVersion.', you are now using '.$version.'<br>'.
+            '[错误] 你的 PHP 版本过高（'.$version.'），Blessing Skin 目前支持低于 '.$maxSupportedVersion.' 的版本（推荐 8.2.x）。'
         );
     }
 

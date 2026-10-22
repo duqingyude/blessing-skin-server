@@ -11,7 +11,7 @@ class EnforceEverGreen
 {
     public function handle($request, Closure $next)
     {
-        $userAgent = $request->userAgent();
+        $userAgent = (string) $request->userAgent();
 
         preg_match('/Chrome\/(\d+)/', $userAgent, $matches);
         $isOldChrome = Arr::has($matches, 1) && $matches[1] < 55;

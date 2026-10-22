@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
                 ->map(fn ($trace) => Arr::only($trace, ['file', 'line']))
                 ->filter(fn ($trace) => Arr::has($trace, 'file'))
                 ->map(function ($trace) {
-                    $trace['file'] = str_replace(base_path().DIRECTORY_SEPARATOR, '', $trace['file']);
+                    $trace['file'] = str_replace(base_path().DIRECTORY_SEPARATOR, '', (string) $trace['file']);
 
                     return $trace;
                 })

@@ -80,7 +80,7 @@ class MarketController extends Controller
             ? app()->getLocale()
             : config('app.fallback_locale');
 
-        $plugins = collect(explode(',', config('plugins.registry')))
+        $plugins = collect(explode(',', (string) config('plugins.registry')))
             ->map(function ($registry) use ($lang) {
                 $registry = str_replace('{lang}', $lang, $registry);
                 $response = Http::withOptions([

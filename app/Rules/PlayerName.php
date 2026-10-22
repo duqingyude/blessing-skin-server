@@ -8,6 +8,7 @@ class PlayerName implements Rule
 {
     public function passes($attribute, $value)
     {
+        $value = (string) $value;
         $regexp = '/.*/';
 
         switch (option('player_name_rule')) {

@@ -117,8 +117,8 @@ class OptionsController extends Controller
             $sign_score = request('sign_score_from').','.request('sign_score_to');
             Option::set('sign_score', $sign_score);
         })->with([
-            'sign_score_from' => @explode(',', option('sign_score'))[0],
-            'sign_score_to' => @explode(',', option('sign_score'))[1],
+            'sign_score_from' => @explode(',', (string) option('sign_score'))[0],
+            'sign_score_to' => @explode(',', (string) option('sign_score'))[1],
         ])->handle();
 
         $sharing = Option::form('sharing', OptionForm::AUTO_DETECT, function ($form) {
